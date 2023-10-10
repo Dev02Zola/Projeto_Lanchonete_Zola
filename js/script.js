@@ -1,266 +1,211 @@
-let navbar = document.querySelector('.navbar');
+    let navbar = document.querySelector('.navbar');
 
-document.querySelector('#menu-btn').onclick = () =>{
-    navbar.classList.toggle('active');
-    searchForm.classList.remove('active');
-    cartItem.classList.remove('active');
-}
-
-let searchForm = document.querySelector('.search-form');
-
-document.querySelector('#search-btn').onclick = () =>{
-    searchForm.classList.toggle('active');
-    navbar.classList.remove('active');
-    cartItem.classList.remove('active');
-}
-
-let cartItem = document.querySelector('.cart-items-container');
-
-document.querySelector('#cart-btn').onclick = () =>{
-    cartItem.classList.toggle('active');
-    navbar.classList.remove('active');
-    searchForm.classList.remove('active');
-}
-
-window.onscroll = () =>{
-    navbar.classList.remove('active');
-    searchForm.classList.remove('active');
-    cartItem.classList.remove('active');
-}
-
-// let openShopping = document.querySelector('.shopping');
-// let closeShopping = document.querySelector('.closeShopping');
-// let list = document.querySelector('.list');
-// let listCard = document.querySelector('.listCard');
-// let body = document.querySelector('body');
-// let total = document.querySelector('.total');
-// let quantity = document.querySelector('.quantity');
-
-// openShopping.addEventListener('click', ()=>{
-//     body.classList.add('active');
-// })
-// closeShopping.addEventListener('click', ()=>{
-//     body.classList.remove('active');
-// })
-
-// let products = [
-//     {
-//         id: 1,
-//         name: 'PRODUCT NAME 1',
-//         image: '1.PNG',
-//         price: 120000
-//     },
-//     {
-//         id: 2,
-//         name: 'PRODUCT NAME 2',
-//         image: '2.PNG',
-//         price: 120000
-//     },
-//     {
-//         id: 3,
-//         name: 'PRODUCT NAME 3',
-//         image: '3.PNG',
-//         price: 220000
-//     },
-//     {
-//         id: 4,
-//         name: 'PRODUCT NAME 4',
-//         image: '4.PNG',
-//         price: 123000
-//     },
-//     {
-//         id: 5,
-//         name: 'PRODUCT NAME 5',
-//         image: '5.PNG',
-//         price: 320000
-//     },
-//     {
-//         id: 6,
-//         name: 'PRODUCT NAME 6',
-//         image: '6.PNG',
-//         price: 120000
-//     }
-// ];
-// let listCards  = [];
-// function initApp(){
-//     products.forEach((value, key) =>{
-//         let newDiv = document.createElement('div');
-//         newDiv.classList.add('item');
-//         newDiv.innerHTML = `
-//             <img src="image/${value.image}">
-//             <div class="title">${value.name}</div>
-//             <div class="price">${value.price.toLocaleString()}</div>
-//             <button onclick="addToCard(${key})">Add To Card</button>`;
-//         list.appendChild(newDiv);
-//     })
-// }
-// initApp();
-// function addToCard(key){
-//     if(listCards[key] == null){
-//         // copy product form list to list card
-//         listCards[key] = JSON.parse(JSON.stringify(products[key]));
-//         listCards[key].quantity = 1;
-//     }
-//     reloadCard();
-// }
-// function reloadCard(){
-//     listCard.innerHTML = '';
-//     let count = 0;
-//     let totalPrice = 0;
-//     listCards.forEach((value, key)=>{
-//         totalPrice = totalPrice + value.price;
-//         count = count + value.quantity;
-//         if(value != null){
-//             let newDiv = document.createElement('li');
-//             newDiv.innerHTML = `
-//                 <div><img src="image/${value.image}"/></div>
-//                 <div>${value.name}</div>
-//                 <div>${value.price.toLocaleString()}</div>
-//                 <div>
-//                     <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
-//                     <div class="count">${value.quantity}</div>
-//                     <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
-//                 </div>`;
-//                 listCard.appendChild(newDiv);
-//         }
-//     })
-//     total.innerText = totalPrice.toLocaleString();
-//     quantity.innerText = count;
-// }
-// function changeQuantity(key, quantity){
-//     if(quantity == 0){
-//         delete listCards[key];
-//     }else{
-//         listCards[key].quantity = quantity;
-//         listCards[key].price = quantity * products[key].price;
-//     }
-//     reloadCard();
-// }
-
-
-
-
-
-// Função para adicionar um item ao carrinho
-function addItemToCart(name, price) {
-    const cartItems = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-
-    // Criar um novo elemento de item de carrinho
-    const cartItem = document.createElement("li");
-    cartItem.innerHTML = `
-        <span>${name}</span>
-        <span>R$ ${price}</span>
-        <button class="remove-item" onclick="removeItemFromCart(this)">Remover</button>
-    `;
-
-    // Adicionar o item ao carrinho
-    cartItems.appendChild(cartItem);
-
-    // Atualizar o total do carrinho
-    const currentTotal = parseFloat(cartTotal.textContent);
-    const itemPrice = parseFloat(price);
-    const newTotal = currentTotal + itemPrice;
-    cartTotal.textContent = newTotal.toFixed(2); // Arredonda para 2 casas decimais
-}
-
-// Função para remover um item do carrinho
-function removeItemFromCart(button) {
-    const cartItem = button.parentElement;
-    const cartTotal = document.getElementById("cart-total");
-
-    // Obter o preço do item a ser removido
-    const itemPrice = parseFloat(cartItem.querySelector("span:last-child").textContent.slice(2));
-
-    // Remover o item do carrinho
-    cartItem.remove();
-
-    // Atualizar o total do carrinho
-    const currentTotal = parseFloat(cartTotal.textContent);
-    const newTotal = currentTotal - itemPrice;
-    cartTotal.textContent = newTotal.toFixed(2); // Arredonda para 2 casas decimais
-}
-
-// Limpar o carrinho
-document.getElementById("clear-cart").addEventListener("click", function() {
-    const cartItems = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-
-    // Remover todos os itens do carrinho
-    while (cartItems.firstChild) {
-        cartItems.removeChild(cartItems.firstChild);
+    document.querySelector('#menu-btn').onclick = () =>{
+        navbar.classList.toggle('active');
+        searchForm.classList.remove('active');
     }
 
-    // Atualizar o total do carrinho para zero
-    cartTotal.textContent = "0.00";
-});
+    let searchForm = document.querySelector('.search-form');
+
+    document.querySelector('#search-btn').onclick = () =>{
+        searchForm.classList.toggle('active');
+        navbar.classList.remove('active');
+    }
+
+    window.onscroll = () =>{
+        navbar.classList.remove('active');
+        searchForm.classList.remove('active');
+    }
 
 
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    
-        // Função para abrir o modal de pagamento
-        function openPaymentModal() {
-            var modal = document.getElementById("payment-modal");
-            modal.style.display = "block";
+    if (document.readyState == 'loading') {
+          document.addEventListener('DOMContentLoaded', ready)
+        } else {
+          ready()
         }
-        
-        // Função para fechar o modal
-        function closePaymentModal() {
-            var modal = document.getElementById("payment-modal");
-            modal.style.display = "none";
+
+        var totalAmount = "0,00"
+
+        function ready() {
+          // Botão remover produto
+          const removeCartProductButtons = document.getElementsByClassName("remove-product-button")
+          for (var i = 0; i < removeCartProductButtons.length; i++) {
+            removeCartProductButtons[i].addEventListener("click", removeProduct)
+          }
+
+          // Mudança valor dos inputs
+          const quantityInputs = document.getElementsByClassName("product-qtd-input")
+          for (var i = 0; i < quantityInputs.length; i++) {
+            quantityInputs[i].addEventListener("change", checkIfInputIsNull)
+          }
+
+          // Botão add produto ao carrinho
+          const addToCartButtons = document.getElementsByClassName("button-hover-background")
+          for (var i = 0; i < addToCartButtons.length; i++) {
+            addToCartButtons[i].addEventListener("click", addProductToCart)
+          }
+
+          // Botão comprar
+          const purchaseButton = document.getElementsByClassName("purchase-button")[0]
+          purchaseButton.addEventListener("click", makePurchase)
         }
+
+        function removeProduct(event) {
+          event.target.parentElement.parentElement.remove()
+          updateTotal()
+        }
+
+        function checkIfInputIsNull(event) {
+          if (event.target.value === "0") {
+            event.target.parentElement.parentElement.remove()
+          }
+
+          updateTotal()
+        }
+
+        function addProductToCart(event) {
+          const button = event.target
+          const productInfos = button.parentElement.parentElement
+          const productImage = productInfos.getElementsByClassName("product-image")[0].src
+          const productName = productInfos.getElementsByClassName("product-title")[0].innerText
+          const productPrice = productInfos.getElementsByClassName("product-price")[0].innerText
+
+          const productsCartNames = document.getElementsByClassName("cart-product-title")
+          for (var i = 0; i < productsCartNames.length; i++) {
+            if (productsCartNames[i].innerText === productName) {
+              productsCartNames[i].parentElement.parentElement.getElementsByClassName("product-qtd-input")[0].value++
+              updateTotal()
+              return
+            }
+          }
+
+          let newCartProduct = document.createElement("tr")
+          newCartProduct.classList.add("cart-product")
+
+          newCartProduct.innerHTML =
+            `
+              <td class="product-identification">
+                <img src="${productImage}" alt="${productName}" class="cart-product-image">
+                <h3 class="cart-product-title">${productName}</h3>
+              </td>
+              <td>
+                <span class="cart-product-price">${productPrice}</span>
+              </td>
+              <td>
+                <input type="number" value="1" min="0" class="product-qtd-input">
+                <button type="button" class="remove-product-button">Remover</button>
+              </td>
+            `
+          
+          const tableBody = document.querySelector(".cart-table tbody")
+          tableBody.append(newCartProduct)
+          updateTotal()
+
+          newCartProduct.getElementsByClassName("remove-product-button")[0].addEventListener("click", removeProduct)
+          newCartProduct.getElementsByClassName("product-qtd-input")[0].addEventListener("change", checkIfInputIsNull)
+        }
+
+        function makePurchase() {
+          if (totalAmount === "0,00") {
+            alert("Seu carrinho está vazio!")
+          } else {   
+            alert(
+              `
+                Obrigado pela sua compra!
+                Valor do pedido: R$${totalAmount}\n
+                Volte sempre :)
+              `
+            )
+
+            document.querySelector(".cart-table tbody").innerHTML = ""
+            updateTotal()
+          }
+        }
+
+        // Atualizar o valor total do carrinho
+        function updateTotal() {
+          const cartProducts = document.getElementsByClassName("cart-product")
+          totalAmount = 0
+
+          for (var i = 0; i < cartProducts.length; i++) {
+            const productPrice = cartProducts[i].getElementsByClassName("cart-product-price")[0].innerText.replace("R$", "").replace(",", ".")
+            const productQuantity = cartProducts[i].getElementsByClassName("product-qtd-input")[0].value
+
+            totalAmount += productPrice * productQuantity
+          }
+          
+          totalAmount = totalAmount.toFixed(2)
+          totalAmount = totalAmount.replace(".", ",")
+          document.querySelector(".cart-total-container span").innerText = "R$" + totalAmount
+        }
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
         
-        // Event listener para abrir o modal quando um produto é clicado
-        var addToCartButtons = document.querySelectorAll(".add-to-cart");
-        addToCartButtons.forEach(function(button) {
-            button.addEventListener("click", openPaymentModal);
-        });
-        
-        // Event listener para fechar o modal quando o usuário clica em "X"
-        var closeButton = document.querySelector(".close");
-        closeButton.addEventListener("click", closePaymentModal);
-        var paymentMethods = document.querySelectorAll(".payment-method");
-        paymentMethods.forEach(function(button) {
-            button.addEventListener("click", function() {
-                var selectedMethod = button.getAttribute("data-method");
-                var paymentDetails = document.querySelectorAll(".payment-details");
-                paymentDetails.forEach(function(detail) {
-                    detail.style.display = "none";
-                });
-                if (selectedMethod === "cartao") {
-                    document.getElementById("cartao-details").style.display = "block";
-                } else if (selectedMethod === "pix") {
-                    document.getElementById("pix-details").style.display = "block";
-                } else if (selectedMethod === "qr") {
-                    document.getElementById("qr-details").style.display = "block";
-                }
+            // Função para abrir o modal de pagamento
+            function openPaymentModal() {
+                var modal = document.getElementById("payment-modal");
+                modal.style.display = "block";
+            }
+            
+            // Função para fechar o modal
+            function closePaymentModal() {
+                var modal = document.getElementById("payment-modal");
+                modal.style.display = "none";
+            }
+            
+            // Event listener para abrir o modal quando um produto é clicado
+            var addToCartButtons = document.querySelectorAll(".add-to-cart");
+            addToCartButtons.forEach(function(button) {
+                button.addEventListener("click", openPaymentModal);
             });
-        });
-        document.getElementById("cartao-pagar").addEventListener("click", function(e) {
-            e.preventDefault();
-            document.getElementById("cartao-details").style.display = "none";
-            alert("Pagamento com Cartão de Crédito efetuado com sucesso!");
-            closePaymentModal();
-        });
-        document.getElementById("pix-pagar").addEventListener("click", function(e) {
-            e.preventDefault();
-            document.getElementById("pix-details").style.display = "none";
-            alert("Pagamento com Pix efetuado com sucesso!");
-            closePaymentModal();
-        });
-        document.getElementById("qr-pagar").addEventListener("click", function(e) {
-            e.preventDefault();
-            // Aqui você pode adicionar a lógica real para processar o pagamento com QR Code
-            // Por enquanto, estamos apenas ocultando os detalhes
-            document.getElementById("qr-details").style.display = "none";
-            alert("Pagamento com QR Code efetuado com sucesso!");
-            closePaymentModal();
-        });
+            
+            // Event listener para fechar o modal quando o usuário clica em "X"
+            var closeButton = document.querySelector(".close");
+            closeButton.addEventListener("click", closePaymentModal);
+            
+            // Event listener para lidar com a escolha da forma de pagamento
+            var paymentMethods = document.querySelectorAll(".payment-method");
+            paymentMethods.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    var selectedMethod = button.getAttribute("data-method");
+            
+                    // Esconda todos os detalhes de pagamento
+                    var paymentDetails = document.querySelectorAll(".payment-details");
+                    paymentDetails.forEach(function(detail) {
+                        detail.style.display = "none";
+                    });
+            
+                    // Mostre os detalhes específicos da forma de pagamento selecionada
+                    if (selectedMethod === "cartao") {
+                        document.getElementById("cartao-details").style.display = "block";
+                    } else if (selectedMethod === "pix") {
+                        document.getElementById("pix-details").style.display = "block";
+                    } else if (selectedMethod === "qr") {
+                        document.getElementById("qr-details").style.display = "block";
+                    }
+                });
+            });
 
-});
+            // Event listener para lidar com o pagamento com Pix
+            document.getElementById("pix-pagar").addEventListener("click", function(e) {
+                e.preventDefault();
+                // Aqui você pode adicionar a lógica real para processar o pagamento com Pix
+                // Por enquanto, estamos apenas ocultando os detalhes
+                document.getElementById("pix-details").style.display = "none";
+                alert("Pagamento com Pix efetuado com sucesso!");
+                closePaymentModal();
+            });
+            
+            // Event listener para lidar com o pagamento com QR Code
+            document.getElementById("qr-pagar").addEventListener("click", function(e) {
+                e.preventDefault();
+                // Aqui você pode adicionar a lógica real para processar o pagamento com QR Code
+                // Por enquanto, estamos apenas ocultando os detalhes
+                document.getElementById("qr-details").style.display = "none";
+                alert("Pagamento com QR Code efetuado com sucesso!");
+                closePaymentModal();
+            });
+
+    });
