@@ -955,7 +955,7 @@
 
         .review .box-container .box{
             border:var(--border);
-            border-radius: 100px 10px 10px 10px;
+            border-radius: 2rem;
             background: linear-gradient(212deg,#f1efef,#333333,#000000);
             background-size: 420% 420%;
             animation: gradient-animation 30s ease infinite;
